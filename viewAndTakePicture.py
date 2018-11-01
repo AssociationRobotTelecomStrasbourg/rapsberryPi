@@ -5,9 +5,9 @@ from picamera import PiCamera
 
 # Start the camera and define settings
 camera = PiCamera()
-camera.resolution = (600, 400) # A smaller resolution means faster processing
+camera.resolution = (1024, 768) # A smaller resolution means faster processing
 camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(600, 400))
+rawCapture = PiRGBArray(camera)
 
 # Give camera time to warm up
 time.sleep(0.1)
@@ -15,7 +15,7 @@ time.sleep(0.1)
 nbPic=0
 # Start video frame capture
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    # Take the frame as an array, convert it to black and white, and look for facial features
+    # Take the frame as an array, convert it to black and white
     image = frame.array
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -31,4 +31,4 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         break
     if key == ord("c") :
         nbPic = nbPic + 1;
-        camera.capture('/home/pi/Desktop/image%s.jpg' % nbPic)
+        camera.captu&re('/home/pi/Desktop/image%s.jpg' % nbPic)
