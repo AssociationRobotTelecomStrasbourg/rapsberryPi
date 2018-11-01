@@ -1,2 +1,1 @@
-Projet de détection des palets.
-
+Projets présents sur raspberry.
