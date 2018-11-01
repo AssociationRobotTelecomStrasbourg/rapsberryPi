@@ -5,9 +5,9 @@ from picamera import PiCamera
 
 # Start the camera and define settings
 camera = PiCamera()
-camera.resolution = (600, 400) # A smaller resolution means faster processing
+camera.resolution = (2592,1944) # A smaller resolution means faster processing
 camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(600, 400))
+rawCapture = PiRGBArray(camera)
 
 # Give camera time to warm up
 time.sleep(0.1)
@@ -31,4 +31,5 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         break
     if key == ord("c") :
         nbPic = nbPic + 1;
-        camera.capture('/home/pi/Desktop/image%s.jpg' % nbPic)
+        camera.capture('/home/pi/raspberry/imageRasp/image%s.jpg' % nbPic)
+        print("Pictuuuure !")
