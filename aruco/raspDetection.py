@@ -43,5 +43,3 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         nbPic = nbPic + 1;
         camera.capture('/home/pi/raspberry/image%s.jpg' % nbPic)
         print("Pictuuure ! Cheeeese !")
-
-
