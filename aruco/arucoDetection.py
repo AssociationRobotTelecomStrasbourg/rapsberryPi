@@ -1,12 +1,17 @@
 import cv2
 import numpy as np
 import cv2.aruco as aruco
+import sys
 
 # Dictionary with two 5x5pixels markers
 aruco_dict = aruco.Dictionary_create(2,5)
 
+if (len(sys.argv) < 2):
+    print("ERROR: Need one argument, path of an image")
+    exit()
+
 # Load one marker
-arucoIm = cv2.imread('../imageRasp/aruco/testMarker_Dict2-5_Id0_Size700.jpg',cv2.IMREAD_GRAYSCALE)
+arucoIm = cv2.imread(sys.argv[1],cv2.IMREAD_GRAYSCALE)
 sizeAruco=arucoIm.shape
 
 # Add white border
@@ -21,6 +26,9 @@ corners, ids, rejectedImgPoints = aruco.detectMarkers(img, aruco_dict)
 imc = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
 result = aruco.drawDetectedMarkers(imc, corners, ids, (0, 0, 255))
 
+
 cv2.imshow('result',imc)
-cv2.waitKey(0)
+key = cv2.waitKey(0) & 0xFF
+while key != ord("q"):
+    key = cv2.waitKey(0) & 0xFF
 cv2.destroyAllWindows()
