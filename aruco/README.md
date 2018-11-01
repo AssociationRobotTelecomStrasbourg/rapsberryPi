@@ -35,7 +35,7 @@ python detection.py <Number of markers in dictionary> <Number of pixel (4,5,6, e
 ### raspDetection
 Detection of marker with a PiCamera.
 ```
-python raspDetection
+python raspDetection.py
 ```
 
 ## Authors
