@@ -1,5 +1,5 @@
 # Aruco
-Aruco is an opencv library allows to create and to detect markers. It's very useful in a case of robot pose estimation.
+Aruco is an opencv library allows to create and to detect markers like "QRCode". It's very useful in a case of robot pose estimation.
 
 ## Prerequisites
 
@@ -42,4 +42,4 @@ python raspDetection.py
 * **Alexis ROLLAND** - *Initial work*
 
 ## See also
-[OpenCV Aruco detection](https://docs.opencv.org/3.1.0/d5/dae/tutorial_aruco_detection.html)
+[OpenCV Aruco detection](https://docs.opencv.org/3.4.3/d5/dae/tutorial_aruco_detection.html)
