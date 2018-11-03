@@ -7,8 +7,8 @@ if (len(sys.argv) < 4):
     print("ERROR: Need 3 arguments: <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Path of marker image>")
     exit()
 
-nbMark = sys.argv[1]
-nbPix = sys.argv[2]
+nbMark = int(sys.argv[1])
+nbPix = int(sys.argv[2])
 pathMarker = sys.argv[3]
 
 # Dictionary
