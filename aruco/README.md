@@ -39,7 +39,7 @@ python raspDetection.py
 ```
 
 ## Authors
-* **Alexis ROLLAND**
+* **Sorgan**
 
 ## See also
 [OpenCV Aruco detection](https://docs.opencv.org/3.4.3/d5/dae/tutorial_aruco_detection.html)
