@@ -5,7 +5,7 @@ from picamera import PiCamera
 
 # Start the camera and define settings
 camera = PiCamera()
-camera.resolution = (1024, 768) # A smaller resolution means faster processing
+camera.resolution = (1024, 768)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera)
 
