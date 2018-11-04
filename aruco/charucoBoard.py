@@ -15,7 +15,7 @@ markerLength = int(sys.argv[4])
 sizeXImg = int(sys.argv[5])
 sizeYImg = int(sys.argv[6])
 
-charucoBoard = aruco.CharucoBoard_create(squaresX,6,7,6,aruco_dict)
+# charucoBoard = aruco.CharucoBoard_create(6,7,7,6,aruco_dict)
 charucoBoard = aruco.CharucoBoard_create(squaresX, squaresY, squareLength, markerLength, aruco_dict)
 
 imBoard = aruco.drawPlanarBoard(charucoBoard,(sizeXImg,sizeYImg))
