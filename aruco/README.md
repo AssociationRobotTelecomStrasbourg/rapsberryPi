@@ -12,7 +12,7 @@ See : [Our OpenCV wiki](https://github.com/AssociationRobotTelecomStrasbourg/ras
 ## Python codes
 
 ### arucoCreation
-Save a marker in `raspberryPi/imageRasp/aruco/`
+Save a marker in `../imageRasp/aruco/`
 
 ```
 python arucoCreation.py  <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Size of image (px)> <Id of marker>
@@ -34,12 +34,27 @@ python detection.py <Number of markers in dictionary> <Number of pixel (4,5,6, e
 
 ### raspDetection
 Detection of marker with a PiCamera.
+
 ```
 python raspDetection.py
 ```
 
+### charucoBoard
+Create a charucoBoard in `../imageRasp/aruco/`
+
+```
+python charucoBoard.py <squaresX> <squaresY> <squareLength> <markerLength> <sizeXImg> <sizeYImg>
+```
+
+
+### cameraCalibration
+
+The file `calibration.py` takes images in `./imageRasp/aruco/charucoBoard/` to calibrate the camera.
+
+To calibrate your camera you need to take photo of a printed charucoBoard and feed them to `calibration.py` line 12.
+
 ## Authors
-* **Sorgan**
+* **Sorgan** - Aruco project
 
 ## See also
 [OpenCV Aruco detection](https://docs.opencv.org/3.4.3/d5/dae/tutorial_aruco_detection.html)
