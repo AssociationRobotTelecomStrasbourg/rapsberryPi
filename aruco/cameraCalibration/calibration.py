@@ -33,7 +33,7 @@ f.write('retval', retval)
 f.write('cameraMatrix', cameraMatrix)
 f.write('distCoeffs', distCoeffs)
 f.write('rvecs', np.array(rvecs))
-f.write('rvecs', np.array(tvecs))
+f.write('tvecs', np.array(tvecs))
 
 
 # cv2.destroyAllWindows()
