@@ -32,11 +32,11 @@ Detection of marker in real image.
 python detection.py <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Path of marker image>
 ```
 
-### raspDetection
+### videoDetection
 Detection of marker with a PiCamera.
 
 ```
-python raspDetection.py
+python videoDetection.py
 ```
 
 ### charucoBoard
