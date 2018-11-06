@@ -34,8 +34,6 @@ if f.isOpened():
     f.write('retval', retval)
     f.write('cameraMatrix', cameraMatrix)
     f.write('distCoeffs', distCoeffs)
-    f.write('rvecs', np.array(rvecs))
-    f.write('tvecs', np.array(tvecs))
 else:
     print("Error to open " + path_file)
     exit()

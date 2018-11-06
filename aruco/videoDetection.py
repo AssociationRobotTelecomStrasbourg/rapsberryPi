@@ -38,19 +38,6 @@ if(f.getNode("distCoeffs").isNone()):
 else:
     distCoeffs = f.getNode("distCoeffs").mat()
 
-if(f.getNode("rvecs").isNone()):
-    print("Error reading rvecs in " + file)
-    exit()
-else:
-    rvecs = f.getNode("rvecs").mat()
-
-
-if(f.getNode("tvecs").isNone()):
-    print("Error reading tvecs in " + file)
-    exit()
-else:
-    tvecs = f.getNode("tvecs").mat()
-
 # Give camera time to warm up
 time.sleep(0.1)
 
