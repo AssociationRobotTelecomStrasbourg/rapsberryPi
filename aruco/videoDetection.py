@@ -14,8 +14,11 @@ rawCapture = PiRGBArray(camera)
 
 # Load calibration parameters
 f=cv2.FileStorage()
-file="cameraCalibration/raspberryPiSorgan/retvalCameraMatrixDistCoeffs.xml"
+file="cameraCalibration/coeffCalibrationCamSorgan.xml"
 j=cv2.FileStorage.open(f,file,0)
+if(~j.isOpened()):
+    print("Error reading " + file)
+    exit()
 
 if(f.getNode("retval").isNone()):
     print("Error reading retval in " + file)
