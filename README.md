@@ -1,3 +1,3 @@
-Projets on Raspberry Pi.
+Projects on Raspberry Pi.
 
 Read information in every folder.
