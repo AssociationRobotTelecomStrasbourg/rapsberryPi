@@ -72,7 +72,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict)
 
-    if (ids is not None) & (len(ids) > 0):
+    if (ids is not None):
         arucoImMarkers = aruco.drawDetectedMarkers(image, corners, ids, (0, 0, 255))
 
         [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
