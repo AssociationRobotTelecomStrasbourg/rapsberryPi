@@ -45,7 +45,7 @@ aruco_dict = aruco.Dictionary_create(2, 5)
 
 
 # Read image
-file = "../imageRasp/aruco/MarkerOnScreen.jpg"
+file = "../imageRasp/aruco/2Markers2-5_2.jpg"
 image = cv2.imread(file)
 if image is None:
     print("Error loading " + file)
@@ -61,6 +61,9 @@ if (ids is not None):
 
     for i in range(len(ids)):
         aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
+        points = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)
+        cv2.putText(image,str(round(np.sqrt(points[0][0][0][0]**2+points[0][0][0][1]**2)/10)),(int(points[0][0][0][0])+10,int(points[0][0][0][1]+10)),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0))
+
 
 cv2.imshow("Display", image)
 

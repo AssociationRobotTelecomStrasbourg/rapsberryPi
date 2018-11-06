@@ -66,13 +66,20 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
         for i in range(len(ids)):
             aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
+            points = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)
+            cv2.putText(image,str(round(np.sqrt(points[0][0][0][0]**2+points[0][0][0][1]**2)/10)),(int(points[0][0][0][0])+10,int(points[0][0][0][1]+10)),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0))
 
     cv2.imshow("Display", image)
 
     # Clear the stream capture
     rawCapture.truncate(0)
 
-    #set "q" as the key to exit the program when pressed
+    # set "q" as the key to exit the program when pressed
     key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
         break
+    # "c" to capture photo
+    if key == ord("c") :
+        nbPic = nbPic + 1;
+        camera.capture('/home/pi/raspberry/imageRasp/image%s.jpg' % nbPic)
+        print("Pictuuuure !")
