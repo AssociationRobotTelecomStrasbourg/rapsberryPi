@@ -75,7 +75,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     if (ids is not None):
         arucoImMarkers = aruco.drawDetectedMarkers(image, corners, ids, (0, 0, 255))
 
-        [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
+        [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, None, None);
 
         for i in range(len(ids)):
             aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
