@@ -32,11 +32,8 @@ f=cv2.FileStorage("cameraCalibration/raspberryPiSorgan/retvalCameraMatrixDistCoe
 f.write('retval', retval)
 f.write('cameraMatrix', cameraMatrix)
 f.write('distCoeffs', distCoeffs)
+f.write('rvecs', np.array(rvecs))
+f.write('rvecs', np.array(tvecs))
 
-f=open('cameraCalibration/raspberryPiSorgan/Rvecs.txt', 'w')
-f.write("\n".join(str(x) for x in rvecs))
-
-f=open('cameraCalibration/raspberryPiSorgan/Tvecs.txt', 'w')
-f.write("\n".join(str(x) for x in tvecs))
 
 # cv2.destroyAllWindows()
