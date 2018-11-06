@@ -16,7 +16,7 @@ rawCapture = PiRGBArray(camera)
 f=cv2.FileStorage()
 file="cameraCalibration/coeffCalibrationCamSorgan.xml"
 j=cv2.FileStorage.open(f,file,0)
-if(~j.isOpened()):
+if(~f.isOpened()):
     print("Error reading " + file)
     exit()
 
