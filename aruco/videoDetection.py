@@ -80,7 +80,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         for i in range(len(ids)):
             aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
 
-        cv2.imshow("Display", image)
+    cv2.imshow("Display", image)
 
     # Clear the stream capture
     rawCapture.truncate(0)
