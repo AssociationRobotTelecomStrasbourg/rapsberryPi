@@ -3,14 +3,14 @@ import cv2
 import numpy as np
 import cv2.aruco as aruco
 import sys
-# from picamera.array import PiRGBArray
-# from picamera import PiCamera
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
  # Start the camera and define settings
-# camera = PiCamera()
-# camera.resolution = (1024, 768)
-# camera.framerate = 32
-# rawCapture = PiRGBArray(camera)
+camera = PiCamera()
+camera.resolution = (1024, 768)
+camera.framerate = 32
+rawCapture = PiRGBArray(camera)
 
 # Load calibration parameters
 f=cv2.FileStorage()
@@ -66,26 +66,26 @@ aruco_dict = aruco.Dictionary_create(2, 5)
 
 
 # Start video frame capture
-# for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-#     image = frame.array
-#     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-#
-#     corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict)
-#
-#     if (ids is not None) & (len(ids) > 0):
-#         arucoImMarkers = aruco.drawDetectedMarkers(image, corners, ids, (0, 0, 255))
-#
-#         [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
-#
-#         for i in range(len(ids)):
-#             aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
-#
-#         cv2.imshow("Display", image)
-#
-#     # Clear the stream capture
-#     rawCapture.truncate(0)
-#
-#     #set "q" as the key to exit the program when pressed
-#     key = cv2.waitKey(1) & 0xFF
-#     if key == ord("q"):
-#         break
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    image = frame.array
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict)
+
+    if (ids is not None) & (len(ids) > 0):
+        arucoImMarkers = aruco.drawDetectedMarkers(image, corners, ids, (0, 0, 255))
+
+        [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
+
+        for i in range(len(ids)):
+            aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
+
+        cv2.imshow("Display", image)
+
+    # Clear the stream capture
+    rawCapture.truncate(0)
+
+    #set "q" as the key to exit the program when pressed
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord("q"):
+        break
