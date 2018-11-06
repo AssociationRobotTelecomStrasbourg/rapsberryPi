@@ -28,12 +28,17 @@ for i in range(1,7):
 
 [retval, cameraMatrix, distCoeffs, rvecs, tvecs] = aruco.calibrateCameraCharuco(allCorners, allIds, charucoBoard, (700,1000),None,None)
 
-f=cv2.FileStorage("cameraCalibration/raspberryPiSorgan/retvalCameraMatrixDistCoeffs.xml",3)
-f.write('retval', retval)
-f.write('cameraMatrix', cameraMatrix)
-f.write('distCoeffs', distCoeffs)
-f.write('rvecs', np.array(rvecs))
-f.write('tvecs', np.array(tvecs))
+path_file="cameraCalibration/coeffCalibrationCamSorgan.xml"
+f=cv2.FileStorage(path_file,3)
+if f.isOpened():
+    f.write('retval', retval)
+    f.write('cameraMatrix', cameraMatrix)
+    f.write('distCoeffs', distCoeffs)
+    f.write('rvecs', np.array(rvecs))
+    f.write('tvecs', np.array(tvecs))
+else:
+    print("Error to open " + path_file)
+    exit()
 
 
 # cv2.destroyAllWindows()
