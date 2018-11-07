@@ -39,7 +39,7 @@ else:
     distCoeffs = f.getNode("distCoeffs").mat()
 
 # Give camera time to warm up
-time.sleep(0.1)
+time.sleep(2)
 
 
 # if (len(sys.argv) < 4):
