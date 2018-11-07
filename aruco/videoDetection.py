@@ -77,7 +77,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             color = (0,255,0)
             scale = 1
             font = cv2.FONT_HERSHEY_SIMPLEX
-            text = str(dist)
+            text = str('{0:.2f}'.format(dist*10))
             pos = ( int(orig[0])+10, int(orig[1]+10) )
 
             cv2.putText(image,text,pos,font,scale,color,thickness)
