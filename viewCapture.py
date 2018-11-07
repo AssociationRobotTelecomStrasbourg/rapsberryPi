@@ -33,3 +33,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         nbPic = nbPic + 1;
         camera.capture('/home/pi/raspberry/imageRasp/image%s.jpg' % nbPic)
         print("Pictuuuure !")
+    # "v" to capture photo
+    if key == ord("v") :
+        camera.start_recording('/home/pi/raspberry/imageRasp/video.h264')
+        print("Start video")
+    # "v" to capture photo
+    if key == ord("b") :
+        camera.stop_recording()
+        print("Stop video")
