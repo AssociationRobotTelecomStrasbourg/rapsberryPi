@@ -65,9 +65,22 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, None, None);
 
         for i in range(len(ids)):
-            aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05);
-            points = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)
-            cv2.putText(image,str(round(np.sqrt(points[0][0][0][0]**2+points[0][0][0][1]**2)/10)),(int(points[0][0][0][0])+10,int(points[0][0][0][1]+10)),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
+            # To debug
+            aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05)
+
+            # Find center and distance
+            orig = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)[0][0][0]
+            range = cv2.sumElems(np.transpose(tvecs[i]**2))[0]
+
+            #  Write range of marker
+            thickness = 2
+            color = (0,255,0)
+            scale = 1
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            text = str(range)
+            pos = ( int(orig[0])+10, int(orig[1]+10) )
+
+            cv2.putText(image,text,pos,font,scale,color,thickness)
 
     cv2.imshow("Display", image)
 
