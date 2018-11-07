@@ -70,14 +70,14 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
             # Find center and distance
             orig = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)[0][0][0]
-            range = cv2.sumElems(np.transpose(tvecs[i]**2))[0]
+            dist = cv2.sumElems(np.transpose(tvecs[i]**2))[0]
 
             #  Write range of marker
             thickness = 2
             color = (0,255,0)
             scale = 1
             font = cv2.FONT_HERSHEY_SIMPLEX
-            text = str(range)
+            text = str(dist)
             pos = ( int(orig[0])+10, int(orig[1]+10) )
 
             cv2.putText(image,text,pos,font,scale,color,thickness)
