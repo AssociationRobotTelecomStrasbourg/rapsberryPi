@@ -25,15 +25,15 @@ Detection of marker in a real marker (direct result of drawMarker function or ar
 python arucoDetection.py <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Path of marker image>
 ```
 
-### detection
+### photoDetection
 Detection of marker in real image.
 
 ```
-python detection.py <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Path of marker image>
+python photoDetection.py <Number of markers in dictionary> <Number of pixel (4,5,6, etc...)> <Path of marker image>
 ```
 
 ### videoDetection
-Detection of marker with a PiCamera.
+Detection of marker with a PiCamera. (Modify the file to have want you expect)
 
 ```
 python videoDetection.py
