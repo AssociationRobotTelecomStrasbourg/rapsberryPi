@@ -9,8 +9,8 @@ from picamera import PiCamera
  # Start the camera and define settings
 camera = PiCamera()
 camera.resolution = (1024, 768)
-camera.framerate = 10
-rawCapture = PiRGBArray(camera)
+camera.framerate = 30
+rawCapture = PiRGBArray(camera, size=(1024, 768))
 
 # Load calibration parameters
 f=cv2.FileStorage()
@@ -62,22 +62,23 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     if (ids is not None):
         arucoImMarkers = aruco.drawDetectedMarkers(image, corners, ids, (0, 0, 255))
 
-        [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, None, None);
+        [rvecs, tvecs, _objPoints] = aruco.estimatePoseSingleMarkers(corners, 0.08, cameraMatrix, distCoeffs, None, None);
 
         for i in range(len(ids)):
             # To debug
-            aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.05)
+            aruco.drawAxis(image, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.04)
 
             # Find center and distance
             orig = cv2.projectPoints(np.array([[0, 0, 0]], dtype=np.float),rvecs[i], tvecs[i], cameraMatrix, distCoeffs)[0][0][0]
-            dist = cv2.sumElems(np.transpose(tvecs[i]**2))[0]
+            dist = np.sqrt(cv2.sumElems(np.transpose(tvecs[i]**2))[0])
+            print(tvecs)
 
             #  Write range of marker
             thickness = 2
             color = (0,255,0)
             scale = 1
             font = cv2.FONT_HERSHEY_SIMPLEX
-            text = str('{0:.2f}'.format(dist*10))
+            text = str('{0:.2f}'.format(dist))
             pos = ( int(orig[0])+10, int(orig[1]+10) )
 
             cv2.putText(image,text,pos,font,scale,color,thickness)
