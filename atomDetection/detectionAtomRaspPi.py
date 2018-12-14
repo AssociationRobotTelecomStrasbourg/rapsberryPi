@@ -1,7 +1,6 @@
 import time
 import cv2
 import numpy as np
-import cv2.aruco as aruco
 import sys
 from picamera.array import PiRGBArray
 from picamera import PiCamera
@@ -39,7 +38,8 @@ else:
     distCoeffs = f.getNode("distCoeffs").mat()
 
 # Give camera time to warm up
-time.sleep(2)
+time.sleep(2
+)
 
 params = cv2.SimpleBlobDetector_Params()
 
