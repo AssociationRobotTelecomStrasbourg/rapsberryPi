@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+import timeit
 
 file = "../imageRasp/atom/distTestBlackFloor/image4.jpg"
 image = cv2.imread(file)
@@ -32,12 +33,16 @@ params.blobColor = 255
 params.minDistBetweenBlobs = 0;
 # params.minRepeatability = 1;
 
+start = timeit.timeit()
+
 detectorBlob = cv2.SimpleBlobDetector_create(params)
-print(detectorBlob)
+
 keypoints = detectorBlob.detect(imgHSV[:,:,2])
 
 for key in keypoints:
     cv2.circle(image, (int(key.pt[0]),int(key.pt[1])) , 5, (255,0,0), -1)
+
+print(start -  timeit.timeit())
 
 plt.imshow(image)
 plt.show()
