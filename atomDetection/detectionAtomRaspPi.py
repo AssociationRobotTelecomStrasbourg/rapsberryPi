@@ -38,8 +38,7 @@ else:
     distCoeffs = f.getNode("distCoeffs").mat()
 
 # Give camera time to warm up
-time.sleep(2
-)
+time.sleep(2)
 
 params = cv2.SimpleBlobDetector_Params()
 
@@ -71,6 +70,7 @@ params.minDistBetweenBlobs = 0;
 
 # Start video frame capture
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    print('New frame')
     image = (frame.array).copy()
 
     imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV);
@@ -79,15 +79,18 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     threshV=np.array((imgHSV[:,:,2]>125)*255,dtype='uint8')
     # cv2.imshow("threshV", threshV)
 
+    print('Detect blob Begin')
     detectorBlob = cv2.SimpleBlobDetector_create(params)
     keypoints = detectorBlob.detect(imgHSV[:,:,2])
     # keypoints = detectorBlob.detect(threshV)
-
+    print('Detect blob End')
     centerBlobs = [ [int(k.pt[0]),int(k.pt[1])] for k in keypoints]
 
+    print('Draw blob')
     imageKeypoints = cv2.drawKeypoints(threshV, keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-    # cv2.imshow("imageKeypoints",imageKeypoints)
+    cv2.imshow("imageKeypoints",imageKeypoints)
 
+    print('Components Connection')
     retval, labels, stats, centroids = cv2.connectedComponentsWithStats(threshV, None, None, None, 4)
 
     possiblePucks=[]
@@ -100,6 +103,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                     possiblePucksStats.append(stats[labels[ce[1],ce[0]]])
                     possibleCenters.append((ce[1],ce[0]))
 
+    print('Fit ellipse Begin')
     for i in range(len(possiblePucks)):
         image[possibleCenters[i]]=[0,255,0]
         area = np.uint8((labels==possiblePucks[i])*255)
@@ -109,7 +113,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         contours= cv2.findContours(area, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         eli=cv2.fitEllipse(contours[1][0])
         cv2.ellipse(image, eli, (0,255,0),2)
-
+    print('Fit ellipse End')
     # cv2.imshow("image",image)
 
     # Clear the stream capture
