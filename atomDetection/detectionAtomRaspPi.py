@@ -13,7 +13,7 @@ rawCapture = PiRGBArray(camera, size=(1024, 768))
 
 # Load calibration parameters
 f=cv2.FileStorage()
-file="/home/pi/raspberry/aruco/cameraCalibration/coeffCalibrationCamSorgan.xml"
+file="/home/pi/raspberryPi/aruco/cameraCalibration/coeffCalibrationCamSorgan.xml"
 j=cv2.FileStorage.open(f,file,0)
 if(not f.isOpened()):
     print("Error reading " + file)
