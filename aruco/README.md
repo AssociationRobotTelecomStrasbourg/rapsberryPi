@@ -9,6 +9,10 @@ We need to install OpenCV.
 
 See : [Our OpenCV wiki](https://github.com/AssociationRobotTelecomStrasbourg/raspberryPi/wiki/OpenCV)
 
+## Tests
+You can try to detect aruco marker with the image `../imageRasp/aruco/2Markers2-5_2.jpg`
+
+
 ## Python codes
 
 ### arucoCreation
