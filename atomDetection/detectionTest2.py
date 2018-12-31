@@ -15,8 +15,6 @@ plt.figure()
 plt.imshow(threshV)
 # plt.figure()
 # plt.hist(imgHSV[:,:,2].ravel(),255)
-=======
-# Simple version
 
 file = "../imageRasp/atom/blackFloorHouse/image1.jpg"
 image = cv2.imread(file)
