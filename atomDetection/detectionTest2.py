@@ -3,7 +3,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 import timeit
 
-<<<<<<< Updated upstream
 file = "/home/pi/raspberryPi/imageRasp/atom/terrainAtom/image6.jpg"
 image = cv2.imread(file)
 
