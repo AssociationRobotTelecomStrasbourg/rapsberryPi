@@ -64,7 +64,7 @@ for i in range(len(possiblePucks)):
     stats = possiblePucksStats[i]
     cv2.imshow("area",area)
 
-    if(stats[cv2.CC_STAT_AREA])
+    #if(stats[cv2.CC_STAT_AREA])
     im2, contours, hierarchy = cv2.findContours(area, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     if ( contours[0].shape[0] > 5 ) :
         eli=cv2.fitEllipse(contours[0])
