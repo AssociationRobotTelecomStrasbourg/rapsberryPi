@@ -83,8 +83,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     print(start - timeit.timeit())
 
     # Display
-    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-    plt.show()
+    cv2.imshow("Display", image)
 
     rawCapture.truncate(0)
 
@@ -96,3 +95,5 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         nbPic = nbPic + 1;
         camera.capture('/home/pi/raspberry/imageRasp/image%s.jpg' % nbPic)
         print("Pictuuuure !")
+
+cv2.destroyAllWindows()
