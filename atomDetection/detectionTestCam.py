@@ -39,6 +39,19 @@ params.blobColor = 255
 params.minDistBetweenBlobs = 0;
 # params.minRepeatability = 1;
 
+#
+# Start the camera and define settings
+# Init parameters
+#
+camera = PiCamera()
+camera.resolution = (1024, 768)
+camera.framerate = 32
+rawCapture = PiRGBArray(camera)
+
+# Give camera time to warm up
+time.sleep(0.1)
+
+nbPic=0
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     # Init
     start = timeit.timeit()
@@ -65,7 +78,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # Draw center
     for key in keypoints:
         cv2.circle(image, (int(key.pt[0]),int(key.pt[1])) , 5, (255,255,255), -1)
-    
+
     print(start - timeit.timeit())
 
     # Display
