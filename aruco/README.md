@@ -64,3 +64,5 @@ To calibrate your camera you need to take photo of a printed charucoBoard and fe
 [OpenCV Aruco detection](https://docs.opencv.org/3.4.3/d5/dae/tutorial_aruco_detection.html)
 
 [OpenCV Calibration with Aruco](https://docs.opencv.org/3.4.3/da/d13/tutorial_aruco_calibration.html)
+
+[Calibration with ArUco and ChArUco](https://docs.opencv.org/3.4.5/d9/d0c/group__calib3d.html#ga3207604e4b1a1758aa66acb6ed5aa65d)
