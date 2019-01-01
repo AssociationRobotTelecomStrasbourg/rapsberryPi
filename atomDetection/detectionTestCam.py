@@ -76,9 +76,6 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     keypoints = detectorBlob.detect(imVOtsu)
 
-    print("Nb of keypoints")
-    print(len(keypoints))
-
     # Draw center
     for key in keypoints:
         cv2.circle(image, (int(key.pt[0]),int(key.pt[1])) , 5, (255,255,255), -1)
