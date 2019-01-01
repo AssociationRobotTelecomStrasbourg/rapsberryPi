@@ -8,7 +8,7 @@ import timeit
 #
 
 # file = "../imageRasp/atom/terrainAtom/image1.jpg"
-file = "../imageRasp/atom/blackFloorHouse/image3.jpg"
+file = "../imageRasp/atom/testCamFailed/image2.jpg"
 image = cv2.imread(file)
 
 imhHLS = cv2.cvtColor(image,cv2.COLOR_BGR2HLS)
@@ -24,25 +24,25 @@ SatLum[lum] = saturation[lum].ravel()
 otsu = cv2.threshold(SatLum, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 imVOtsu = otsu[1]
 
-# plt.figure()
-# plt.imshow(imhHLS[:,:,1], cmap='gray')
-# plt.title("Lum")
-#
-# plt.figure()
-# plt.imshow(saturation, cmap='gray')
-# plt.title("saturation")
-#
+plt.figure()
+plt.imshow(imhHLS[:,:,1], cmap='gray')
+plt.title("Lum")
+
+plt.figure()
+plt.imshow(saturation, cmap='gray')
+plt.title("saturation")
+
 # plt.figure()
 # plt.imshow(saturationMine, cmap='gray')
 # plt.title("saturationMine")
-#
-# plt.figure()
-# plt.imshow(SatLum, cmap='gray')
-# plt.title("Mine")
-#
-# plt.figure()
-# plt.imshow(imVOtsu, cmap='gray')
-# plt.title("imVOtsu")
+
+plt.figure()
+plt.imshow(SatLum, cmap='gray')
+plt.title("Mine")
+
+plt.figure()
+plt.imshow(imVOtsu, cmap='gray')
+plt.title("imVOtsu")
 
 
 params = cv2.SimpleBlobDetector_Params()
