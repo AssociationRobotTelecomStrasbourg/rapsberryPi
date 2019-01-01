@@ -93,7 +93,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         break
     if key == ord("c") :
         nbPic = nbPic + 1;
-        camera.capture('/home/pi/raspberry/imageRasp/image%s.jpg' % nbPic)
+        camera.capture('/home/pi/raspberryPi/imageRasp/image%s.jpg' % nbPic)
         print("Pictuuuure !")
 
 cv2.destroyAllWindows()
