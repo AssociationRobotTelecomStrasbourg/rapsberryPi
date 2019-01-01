@@ -41,3 +41,4 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     if key == ord("b") :
         camera.stop_recording()
         print("Stop video")
+cv2.destroyAllWindows()
