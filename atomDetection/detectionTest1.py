@@ -2,7 +2,11 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-file = "../imageRasp/atom/distTestBlackFloor/image4.jpg"
+#
+# Detect puck in image with intensity and blob detection
+#
+
+file = "../imageRasp/atom/distTestBlackFloor/image5.jpg"
 image = cv2.imread(file)
 
 imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV);

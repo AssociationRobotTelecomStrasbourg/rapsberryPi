@@ -5,7 +5,7 @@ import timeit
 import glob
 
 #
-# Detect puck in a set of image with my own saturation and with blobDetection
+# Detect puck in image with my opencv saturation and remove black color and with blobDetection
 #
 
 params = cv2.SimpleBlobDetector_Params()
@@ -20,22 +20,22 @@ params.minThreshold = 0
 params.maxThreshold = 2
 params.thresholdStep = 1
 
-params.minArea = 100
+params.minArea = 300
 params.maxArea = 30000
 
-params.minConvexity = 0.9
+params.minConvexity = 0.8
 params.maxConvexity = 1
 
 params.minInertiaRatio = 0.1
-params.maxInertiaRatio = 0.8
+params.maxInertiaRatio = 0.9
 
-params.minCircularity = 0.55
+params.minCircularity = 0.5
 params.maxCircularity = 0.9
 
 params.blobColor = 255
 
 params.minDistBetweenBlobs = 0;
-# params.minRepeatability = 1
+# params.minRepeatability = 1;
 
 # Folder to find information
 
@@ -47,11 +47,14 @@ for f in range(len(files)):
     file = files[f]
     image = cv2.imread(file)
 
-    # Find color
-    saturation = (1-np.min(image,axis=2)/np.mean(image,axis=2))*255
-    saturation = saturation.astype('uint8')
+    imhHLS = cv2.cvtColor(image,cv2.COLOR_BGR2HLS)
+    saturation = imhHLS[:,:,2]
+    lum = imhHLS[:,:,1]>30
 
-    otsu = cv2.threshold(saturation, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU);
+    SatLum = np.zeros(lum.shape, dtype="uint8")
+    SatLum[lum] = saturation[lum].ravel()
+
+    otsu = cv2.threshold(SatLum, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU);
     imVOtsu = otsu[1]
 
     # Find blob
@@ -64,7 +67,7 @@ for f in range(len(files)):
 
     # Draw center
     for key in keypoints:
-        cv2.circle(image, (int(key.pt[0]),int(key.pt[1])) , 5, (255,0,0), -1)
+        cv2.circle(image, (int(key.pt[0]),int(key.pt[1])) , 5, (255,255,255), -1)
 
     print(start - timeit.timeit())
 
