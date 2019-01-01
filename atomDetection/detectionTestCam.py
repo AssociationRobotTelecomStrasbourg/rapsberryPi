@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 import timeit
+import time
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
